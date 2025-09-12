@@ -1,76 +1,119 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Administrador - Biblioteca Virtual</title>
-    <link rel="stylesheet" href="../../src/styles/stilos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inicio sesion</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
+
+    <!-- Fuente de letras -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="../web/assets/css/stylesheet.css" />
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container-fluid" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-            <div style="display: flex; align-items: center;">
+    <!-- ==========================================   Menú  =============================================================== -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <!-- Logo y nombre -->
+            <div class="d-flex align-items-center">
                 <img src="../../src/assets/admin-images/1.png" alt="Logo" width="70" height="50"
-                    style="margin-right: 10px;" />
-                <span class="navbar-brand" style="font-size: 1.5rem; color: var(--dark-text);">Biblioteca Virtual - Admin</span>
+                    class="d-inline-block align-text-top me-2" />
+                <span class="navbar-brand mb-0 h1">Biblioteca Virtual</span>
             </div>
-            </div>
-    </nav>
 
+            <!-- Botón de inicio de regreso-->
+            <div class="d-flex">
+                <button class="btn btn-secondary" onclick="history.back()">Regresar</button>
+            </div>
+        </div>
+    </nav>
+    <!-- ==========================================   Menú  =============================================================== -->
+    <!-- ==========================================   Cuerpo  =============================================================== -->
     <div id="bannerLogin">
-        <div class="container"> <div class="login-container">
-                <h2>Acceso de Administrador</h2>
-                <form action="../../public/admin-interfase/dashboard.html" method="POST"> <div class="mb-3">
-                        <label for="admin_email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="admin_email" name="admin_email" placeholder="admin@example.com" required>
+        <div class="container">
+            <div class="login-container">
+                <h2 class="text-center mb-4">Iniciar Sesión</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo" >
                     </div>
                     <div class="mb-3">
-                        <label for="admin_password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="admin_password" name="admin_password" placeholder="Ingresa tu contraseña" required>
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña"
+                            >
                     </div>
                     <div class="d-grid mb-3">
-                        <a href="../../public/admin-interfase/dashboard.html" button type="submit" class="btn btn-primary"> entrar</a>
-                        
+                        <button type="submit" class="btn btn-info"><a href="dashboard.html">Entrar admin</a></button>
+
                     </div>
-                    <div class="text-center" style="margin-top: 1rem;">
+                    <div class="d-grid mb-3">
+                        <a href="registro.html" class="btn btn-info">Registrarse</a>
+                    </div>
+                    <div class="text-center mt-3">
                         <a href="#">¿Olvidaste tu contraseña?</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-  </nav>
 
-  <div id="bannerLogin">
-    <div class="container">
-      <div class="login-container">
-        <h2>Acceso de Administrador</h2>
-        <form id="loginForm">
-          <div class="mb-3">
-            <label for="admin_email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="admin_email" name="admin_email" placeholder="admin@example.com" required>
-          </div>
-          <div class="mb-3">
-            <label for="admin_password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="admin_password" name="admin_password" placeholder="Ingresa tu contraseña" required>
-          </div>
-          <div id="error-message" style="color: red; margin-bottom: 10px;"></div>
-          <div class="d-grid mb-3">
-            <button type="submit" class="btn btn-primary">Entrar</button>
-          </div>
-          <div class="text-center" style="margin-top: 1rem;">
-            <a href="#">¿Olvidaste tu contraseña?</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+    <!-- ==========================================   Cuerpo  =============================================================== -->
+    <!-- ==========================================   footer  =============================================================== -->
+    <footer class="pie-pagina">
+        <div class="contenido-footer">
+            <div class="redes">
+                <a href="#"><img src="../../src/assets/admin-images/facebook-brands.svg" height="30" alt="Facebook"></a>
+                <a href="#"><img src="../../src/assets/web-images/spotify-brands.svg" height="30" alt="spotify"></a>
+                <a href="#"><img src="../../src/assets/web-images/instagram-brands.svg" height="30" alt="Instagram"></a>
+            </div>
 
-  <!-- Vinculamos el JS -->
-  <script src="../admin/assets/js/login.js"></script>
+            <div class="informacion">
+                <ul>
+                    <li>Conócenos</li>
+                    <li>Encuéntranos</li>
+                    <li>Informe 2024</li>
+                    <li>Tarifas</li>
+                    <li>Beneficios</li>
+                    <li>Trabaja con nosotros</li>
+                    <li>Transparencia y acceso a la información pública</li>
+                    <li>Nuestras políticas</li>
+                    <li>Términos y condiciones</li>
+                    <li><strong>Notificaciones judiciales:</strong> </li>
+                </ul>
+                <ul>
+                    <li>Te acompañamos</li>
+                    <li>Atención y servicio a la ciudadanía</li>
+                    <li>Presentar una petición u observación sobre los servicios</li>
+                    <li>Carta derechos y deberes afiliados</li>
+                    <li>Nuestros compromisos frente a la ética y el Gobierno corporativo</li>
+                    <li>Ayúdanos a mejorar, cuéntanos tu experiencia</li>
+                    <li>Mapa de sitio</li>
+                </ul>
+                <ul>
+                    <li><strong>Central de llamadas</strong></li>
+                    <li>Para los demás municipios y regiones sin costo</li>
+                    <li>01 8000 415 455</li>
+                    <li>Valle de Aburrá y Oriente cercano</li>
+                    <li>604 360 70 80</li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 20px;">Derechos reservados &copy; 2025</p>
+    </footer>
+    <!-- ==========================================   footer  =============================================================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
