@@ -1,213 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudiantes - Biblioteca Virtual</title>
-    <link rel="stylesheet" href="../../src/styles/stilos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estudiantes - Biblioteca Virtual</title>
+  <link rel="stylesheet" href="../../src/styles/stilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWTKbooA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body>
-    <div class="wrapper">
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <img src="../../src/assets/admin-images/1.png" alt="Logo" width="70px" height="50px" class="logo-sidebar h3">
-                Biblioteca Virtual
-            </div>
-            <nav class="sidebar-nav">
-                <div class="sidebar-section-title">PRINCIPAL</div>
-                <a href="../../public/admin-interfase/dashboard.html" class="nav-item">
-                    <i class="fas fa-th-large icon"></i>Dashboard
-                </a>
-                <a href="../../public/admin-interfase/prestamos.html" class="nav-item">
-                    <i class="fas fa-handshake icon"></i>Préstamos
-                </a>
-                <a href="../../public/admin-interfase/devoluciones.html" class="nav-item">
-                    <i class="fas fa-undo icon"></i>Devoluciones
-                </a>
-                <!-- <a href="../../public/admin-interfase/item.html" class="nav-item">
-                    <i class="fas fa-exclamation-triangle icon"></i>Pérdidas
-                </a> -->
-
-                <div class="sidebar-section-title mt-3">LIBROS</div>
-                <a href="../../public/admin-interfase/catalogo.html" class="nav-item">
-                    <i class="fas fa-book icon"></i>Libros
-                </a>
-                <!-- <a href="autores_puro_interactivo.html" class="nav-item">
-                    <i class="fas fa-user-tie icon"></i>Autores
-                </a> -->
-                <a href="../../public/admin-interfase/categorias.html" class="nav-item">
-                    <i class="fas fa-bookmark icon"></i>Categorías
-                </a>
-                <!-- <a href="ubicaciones_puro_interactivo.html" class="nav-item">
-                    <i class="fas fa-map-marker-alt icon"></i>Ubicaciones
-                </a> -->
-
-                <div class="sidebar-section-title mt-3">USUARIOS</div>
-                <a href="../../public/admin-interfase/estudiantes.html" class="nav-item active">
-                    <i class="fas fa-user-graduate icon"></i>Estudiantes
-                </a>
-                <a href="../../public/admin-interfase/perfil.html" class="nav-item">
-                    <i class="fas fa-chalkboard-teacher icon"></i>Profesores
-                </a>
-            </nav>
-        </div>
-        <div class="page-content">
-            <header class="navbar">
-                <button class="menu-toggle"><i class="fas fa-bars"></i></button>
-
-                <nav class="navbar-nav">
-                    <a href="#" class="nav-link"><i class="fas fa-bell icon-lg text-primary"></i></a>
-                    <a href="#" class="nav-link"><i class="fas fa-user-circle icon-lg text-secondary"></i></a>
-
-                    <div class="form-group-row">
-                        <div class="form-group">
-                            <label for="seccion">Admin</label>
-                            <select id="seccion" name="seccion">
-                                <option value="">Seleccione una sección</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                            </select>
-                        </div>
-
-                    </div>
-                </nav>
-            </header>
-
-            <div class="container">
-                <div class="header-content">
-                    <div>
-                        <h1>Estudiantes</h1>
-                        <p class="breadcrumb">Home / Estudiantes</p>
-                    </div>
-                    <a href="registro.html" button class="btn btn-primary" id="openAddForm">
-                        <i class="fas fa-plus icon-btn">Nuevo Estudiante
-
-                    </a>
-
-                </div>
-
-                <div class="table-container">
-                    <div class="table-actions">
-                    </div>
-                    <div class="search-input">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" placeholder="Buscar:">
-                    </div>
-                </div>
-
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Código <i class="fas fa-sort sort-icon"></i></th>
-                            <th>Documento <i class="fas fa-sort sort-icon"></i></th>
-                            <th>Nombres <i class="fas fa-sort sort-icon"></i></th>
-                            <th>Apellidos <i class="fas fa-sort sort-icon"></i></th>
-                            <th>Teléfono <i class="fas fa-sort sort-icon"></i></th>
-                            <th>Programa <i class="fas fa-sort sort-icon"></i></th>
-                            <th>Sección <i class="fas fa-sort sort-icon"></i></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-play icon-table"></i>E-1001</td>
-                            <td>10203040</td>
-                            <td>María</td>
-                            <td>González</td>
-                            <td>3001234567</td>
-                            <td>Desarrolo De Software</td>
-                            <td>A</td>
-                            <td class="actions">
-                                <button class="btn btn-warning btn-sm" title="Editar"><i
-                                        class="fas fa-pen"></i></button>
-                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-play icon-table"></i>E-1002</td>
-                            <td>20304050</td>
-                            <td>Juan</td>
-                            <td>Rodríguez</td>
-                            <td>3019876543</td>
-                            <td>Salud Ocupacional</td>
-                            <td>B</td>
-                            <td class="actions">
-                                <button class="btn btn-warning btn-sm" title="Editar"><i
-                                        class="fas fa-pen"></i></button>
-                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-play icon-table"></i>E-1003</td>
-                            <td>30405060</td>
-                            <td>Sofía</td>
-                            <td>Fernández</td>
-                            <td>3024567890</td>
-                            <td>Asistente Administrativo</td>
-                            <td>C</td>
-                            <td class="actions">
-                                <button class="btn btn-warning btn-sm" title="Editar"><i
-                                        class="fas fa-pen"></i></button>
-                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-play icon-table"></i>E-1004</td>
-                            <td>40506070</td>
-                            <td>Pedro</td>
-                            <td>López</td>
-                            <td>3037890123</td>
-                            <td>Diseño Grafico</td>
-                            <td>A</td>
-                            <td class="actions">
-                                <button class="btn btn-warning btn-sm" title="Editar"><i
-                                        class="fas fa-pen"></i></button>
-                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-play icon-table"></i>E-1005</td>
-                            <td>50607080</td>
-                            <td>Laura</td>
-                            <td>Díaz</td>
-                            <td>3045678901</td>
-                            <td>Contabilidad</td>
-                            <td>A</td>
-                            <td class="actions">
-                                <button class="btn btn-warning btn-sm" title="Editar"><i
-                                        class="fas fa-pen"></i></button>
-                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="pagination-info">
-                    <small>Mostrando registros del 1 al 5 de un total de 5 registros</small>
-                    <div class="pagination">
-                        <a href="#" class="page-link disabled">Anterior</a>
-                        <a href="#" class="page-link active">1</a>
-                        <a href="#" class="page-link disabled">Siguiente</a>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <footer class="footer">
-                <p>&copy; Reservados todos los derechos</p>
-                <p>Designed by <a href="#">BIBLIOTECA VIRTUAL</p>
-            </footer>
-        </div>
+  <div class="wrapper">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <img src="../../src/assets/admin-images/1.png" alt="Logo" width="70" height="50" class="logo-sidebar h3">
+        Biblioteca Virtual
+      </div>
+      <nav class="sidebar-nav">
+        <!-- tu navegación igual -->
+        <div class="sidebar-section-title mt-3">USUARIOS</div>
+        <a href="../../public/admin-interfase/estudiantes.html" class="nav-item active">
+          <i class="fas fa-user-graduate icon"></i>Estudiantes
+        </a>
+      </nav>
     </div>
-</body>
-</div>
-</div>
 
+    <!-- UNA SOLA vez page-content (eliminé duplicados/confusión) -->
+    <div class="page-content">
+      <header class="navbar">
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        <nav class="navbar-nav">
+          <a href="#" class="nav-link"><i class="fas fa-bell icon-lg text-primary"></i></a>
+          <a href="#" class="nav-link"><i class="fas fa-user-circle icon-lg text-secondary"></i></a>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="seccion">Admin</label>
+              <select id="seccion" name="seccion">
+                <option value="">Seleccione una sección</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <div class="container">
+        <div class="header-content">
+          <div>
+            <h1>Estudiantes</h1>
+            <p class="breadcrumb">Home / Estudiantes</p>
+          </div>
+
+          <!-- Botón corregido: id = btnNuevo (el JS lo usa) -->
+          <a href="#" class="btn btn-primary" id="btnNuevo">
+            <i class="fas fa-plus icon-btn"></i> Nuevo Estudiante
+          </a>
+        </div>
+
+        <div class="table-container">
+          <div class="table-actions"></div>
+
+          <!-- Buscador: id = searchInput (el JS lo usa) -->
+          <div class="search-input">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Buscar estudiante...">
+          </div>
+
+          <!-- Tabla: id = studentsTable -->
+          <table class="data-table" id="studentsTable">
+            <thead>
+              <tr>
+                <th>Código <i class="fas fa-sort sort-icon"></i></th>
+                <th>Documento <i class="fas fa-sort sort-icon"></i></th>
+                <th>Nombres <i class="fas fa-sort sort-icon"></i></th>
+                <th>Apellidos <i class="fas fa-sort sort-icon"></i></th>
+                <th>Teléfono <i class="fas fa-sort sort-icon"></i></th>
+                <th>Programa <i class="fas fa-sort sort-icon"></i></th>
+                <th>Sección <i class="fas fa-sort sort-icon"></i></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Pueden quedar filas iniciales o vacías; el JS las renderizará -->
+            </tbody>
+          </table>
+
+          <div class="pagination-info">
+            <small id="paginationInfo">Mostrando registros</small>
+            <div class="pagination">
+              <a href="#" class="page-link disabled">Anterior</a>
+              <a href="#" class="page-link active">1</a>
+              <a href="#" class="page-link disabled">Siguiente</a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <p>&copy; Reservados todos los derechos</p>
+          <p>Designed by <a href="#">BIBLIOTECA VIRTUAL</a></p>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- Asegúrate de que la ruta del script sea correcta para tu proyecto -->
+  <script src="../../src/scripts/estudiantes.js"></script>
+</body>
 </html>
