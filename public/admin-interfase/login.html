@@ -42,8 +42,35 @@
             </div>
         </div>
     </div>
+  </nav>
 
+  <div id="bannerLogin">
+    <div class="container">
+      <div class="login-container">
+        <h2>Acceso de Administrador</h2>
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="admin_email" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="admin_email" name="admin_email" placeholder="admin@example.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="admin_password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="admin_password" name="admin_password" placeholder="Ingresa tu contraseña" required>
+          </div>
+          <div id="error-message" style="color: red; margin-bottom: 10px;"></div>
+          <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-primary">Entrar</button>
+          </div>
+          <div class="text-center" style="margin-top: 1rem;">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-
+  <!-- Vinculamos el JS -->
+  <script src="../admin/assets/js/login.js"></script>
 </body>
+
 </html>
