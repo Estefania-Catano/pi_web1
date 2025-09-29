@@ -1,18 +1,22 @@
 const loginForm = document.getElementById('loginForm');
-const mensajeLogin = document.getElementById('mensaje'); // cambia 'mensaje' a 'mensajeLogin'
+const mensajeLogin = document.getElementById('mensaje'); // mensaje en login
 
+// Login
 loginForm.addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const usuario = document.getElementById('user').value;
+  const correo = document.getElementById('user').value;
   const password = document.getElementById('password').value;
 
-  const storedPassword = localStorage.getItem(usuario);
+  const usuarioData = JSON.parse(localStorage.getItem(correo)); // parseamos JSON
 
-  if(storedPassword && storedPassword === password) {
+  if(usuarioData && usuarioData.password === password) {
     mensajeLogin.textContent = 'Inicio de sesión exitoso!';
     mensajeLogin.classList.remove('text-danger');
     mensajeLogin.classList.add('text-success');
+
+    // Guardar usuario activo
+    localStorage.setItem('usuarioActivo', JSON.stringify(usuarioData));
 
     // Redirigir a otra página después de 1 segundo
     setTimeout(() => {
@@ -24,6 +28,7 @@ loginForm.addEventListener('submit', function(e) {
     mensajeLogin.classList.add('text-danger');
   }
 });
+
 // Recuperar contraseña
 const formRecuperar = document.getElementById('formRecuperar');
 const mensajeRecuperar = document.getElementById('mensajeRecuperar');
@@ -32,6 +37,7 @@ formRecuperar.addEventListener('submit', function(e) {
     e.preventDefault();
 
     const correo = document.getElementById('correoRecuperar').value.trim();
+    const usuarioData = JSON.parse(localStorage.getItem(correo));
 
     if (!correo) {
         mensajeRecuperar.textContent = 'Ingrese un correo válido.';
@@ -40,10 +46,8 @@ formRecuperar.addEventListener('submit', function(e) {
         return;
     }
 
-    const storedPassword = localStorage.getItem(correo);
-
-    if(storedPassword) {
-        mensajeRecuperar.textContent = `La contraseña de ${correo} es: ${storedPassword}`;
+    if(usuarioData) {
+        mensajeRecuperar.textContent = `La contraseña de ${correo} es: ${usuarioData.password}`;
         mensajeRecuperar.classList.remove('text-danger');
         mensajeRecuperar.classList.add('text-success');
     } else {

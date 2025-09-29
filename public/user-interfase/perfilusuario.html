@@ -35,19 +35,19 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-            <!-- Menú centrado -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-                <div class="navbar-nav text-center">
-                    <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-                    <a class="nav-link" href="../../public/user-interfase/catalogo.html">Catalogo</a>
-                    <a class="nav-link" href="../../public/user-interfase/Blog.html">Blog</a>
-                </div>
-            </div>
+      <!-- Menú centrado -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+        <div class="navbar-nav text-center">
+          <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+          <a class="nav-link" href="../../public/user-interfase/catalogo.html">Catalogo</a>
+          <a class="nav-link" href="../../public/user-interfase/Blog.html">Blog</a>
+        </div>
+      </div>
 
-<div>
-    <a href="../../public/user-interfase/perfilusuario.html"><img src="../../src/assets/web-images/human_14549368.png" alt="" class="human"></a>
-</div>
-
+      <!-- Icono perfil y logout -->
+      <div class="d-flex align-items-center">
+        <button id="logoutBtn" class="btn btn-danger btn-sm">Cerrar sesión</button>
+      </div>
     </div>
   </nav>
   <!-- ==========================================   Menú  =============================================================== -->
@@ -60,7 +60,7 @@
             <img src="../../src/assets/web-images/lector.png" alt="Perfil lector">
           </div>
           <div class="texto">
-            <h2>Andrea Benitez Cañas</h2>
+            <h2 id="nombrePerfil"></h2>
           </div>
         </article>
       </section>
@@ -68,23 +68,34 @@
   </div>
   <!-- ==========================================   Perfil  =============================================================== -->
   <!-- ==========================================   Información  =============================================================== -->
-  <div id="informacionUsuario">
-    <div class="container-fluid">
+  <div id="informacionUsuario" class="container my-4">
       <div class=" text-dark p-4 my-4 rounded">
         <h2 class="text-center">Información del usuario</h2>
       </div>
       <table class="table">
         <tr>
+          <th>Tipo de documento</th>
+          <td id="tipoDocumento"></td>
+        </tr>
+        <tr>
+          <th>Numero de documento</th>
+          <td id="numeroDocumento"></td>
+        </tr>
+        <tr>
           <th>Nombre</th>
-          <td>Andrea Benitez Cañas</td>
+          <td id="nombre"></td>
+        </tr>
+                <tr>
+          <th>Apellido</th>
+          <td id="apellido"></td>
         </tr>
         <tr>
           <th>Correo</th>
-          <td>Andrea.Benitez@cesde.net</td>
+          <td id="correo"></td>
         </tr>
         <tr>
           <th>Teléfono</th>
-          <td>3001234567</td>
+          <td id="telefono"></td>
         </tr>
         <tr>
           <th>Fecha de nacimiento</th>
@@ -92,11 +103,10 @@
         </tr>
         <tr>
           <th>Dirección</th>
-          <td>Calle 123, Medellín</td>
+          <td id="direccion"></td>
         </tr>
       </table>
     </div>
-  </div>
   <!-- ==========================================   Información  =============================================================== -->
   <!-- ==========================================   Prestamos  =============================================================== -->
   <div id="prestamos">
@@ -135,53 +145,54 @@
       </table>
     </div>
     <!-- ==========================================   Prestamos  =============================================================== -->
-            <!-- ==========================================   footer  =============================================================== -->
-         <footer class="pie-pagina">
-        <div class="contenido-footer">
-            <div class="redes">
-                <a href="#"><img src="../../src/assets/web-images/facebook-brands.svg" alt="Facebook"></a>
-                <a href="#"><img src="../../src/assets/web-images/instagram-brands.svg" alt="Instagram"></a>
-                <a href="#"><img src="../../src/assets/web-images/spotify-brands.svg" alt="Spotify"></a>
-            </div>
-    
-            <div class="informacion">
-                <ul>
-                    <li>Conócenos</li>
-                    <li>Encuéntranos</li>
-                    <li>Informe 2024</li>
-                    <li>Tarifas</li>
-                    <li>Beneficios</li>
-                    <li>Trabaja con nosotros</li>
-                    <li>Transparencia y acceso a la información pública</li>
-                    <li>Nuestras políticas</li>
-                    <li>Términos y condiciones</li>
-                    <li><strong>Notificaciones judiciales:</strong> </li>
-                </ul>
-                <ul>
-                    <li>Te acompañamos</li>
-                    <li>Atención y servicio a la ciudadanía</li>
-                    <li>Presentar una petición u observación sobre los servicios</li>
-                    <li>Carta derechos y deberes afiliados</li>
-                    <li>Nuestros compromisos frente a la ética y el Gobierno corporativo</li>
-                    <li>Ayúdanos a mejorar, cuéntanos tu experiencia</li>
-                    <li>Mapa de sitio</li>
-                </ul>
-                <ul>
-                    <li><strong>Central de llamadas</strong></li>
-                    <li>Para los demás municipios y regiones sin costo</li>
-                    <li>01 8000 415 455</li>
-                    <li>Valle de Aburrá y Oriente cercano</li>
-                    <li>604 360 70 80</li>
-                </ul>
-            </div>
+    <!-- ==========================================   footer  =============================================================== -->
+    <footer class="pie-pagina">
+      <div class="contenido-footer">
+        <div class="redes">
+          <a href="#"><img src="../../src/assets/web-images/facebook-brands.svg" alt="Facebook"></a>
+          <a href="#"><img src="../../src/assets/web-images/instagram-brands.svg" alt="Instagram"></a>
+          <a href="#"><img src="../../src/assets/web-images/spotify-brands.svg" alt="Spotify"></a>
         </div>
-    
-        <p style="text-align: center; margin-top: 20px;">Derechos reservados &copy; 2025</p>
+
+        <div class="informacion">
+          <ul>
+            <li>Conócenos</li>
+            <li>Encuéntranos</li>
+            <li>Informe 2024</li>
+            <li>Tarifas</li>
+            <li>Beneficios</li>
+            <li>Trabaja con nosotros</li>
+            <li>Transparencia y acceso a la información pública</li>
+            <li>Nuestras políticas</li>
+            <li>Términos y condiciones</li>
+            <li><strong>Notificaciones judiciales:</strong> </li>
+          </ul>
+          <ul>
+            <li>Te acompañamos</li>
+            <li>Atención y servicio a la ciudadanía</li>
+            <li>Presentar una petición u observación sobre los servicios</li>
+            <li>Carta derechos y deberes afiliados</li>
+            <li>Nuestros compromisos frente a la ética y el Gobierno corporativo</li>
+            <li>Ayúdanos a mejorar, cuéntanos tu experiencia</li>
+            <li>Mapa de sitio</li>
+          </ul>
+          <ul>
+            <li><strong>Central de llamadas</strong></li>
+            <li>Para los demás municipios y regiones sin costo</li>
+            <li>01 8000 415 455</li>
+            <li>Valle de Aburrá y Oriente cercano</li>
+            <li>604 360 70 80</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="text-align: center; margin-top: 20px;">Derechos reservados &copy; 2025</p>
     </footer>
-        <!-- ==========================================   footer  =============================================================== -->
+    <!-- ==========================================   footer  =============================================================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
       crossorigin="anonymous"></script>
+      <script src="../../src/scripts/perfilUsuario.js"></script>
 </body>
 
 </html>
