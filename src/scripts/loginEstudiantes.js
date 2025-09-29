@@ -1,37 +1,56 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.createElement("button");
-  btn.innerText = "⬆ Volver arriba";   
-  btn.classList.add("btn", "btn-primary"); 
-  btn.style.position = "fixed";
-  btn.style.bottom = "20px";
-  btn.style.right = "20px";
-  btn.style.display = "none"; 
-  btn.style.zIndex = "1000"; 
-  document.body.appendChild(btn);
+const loginForm = document.getElementById('loginForm');
+const mensajeLogin = document.getElementById('mensaje'); // cambia 'mensaje' a 'mensajeLogin'
 
-
-  window.addEventListener("scroll", () => {
-    btn.style.display = window.scrollY > 200 ? "block" : "none";
-  });
-
-
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-});
-
-//Ingreso
-document.querySelector("form").addEventListener("submit", (e) => {
+loginForm.addEventListener('submit', function(e) {
   e.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const usuario = document.getElementById('user').value;
+  const password = document.getElementById('password').value;
 
-  if (user && user.email === email && user.password === password) {
-    alert("✅ Inicio de sesión correcto");
-    window.location.href = "../../public/user-interfase/perfilusuario.html";
+  const storedPassword = localStorage.getItem(usuario);
+
+  if(storedPassword && storedPassword === password) {
+    mensajeLogin.textContent = 'Inicio de sesión exitoso!';
+    mensajeLogin.classList.remove('text-danger');
+    mensajeLogin.classList.add('text-success');
+
+    // Redirigir a otra página después de 1 segundo
+    setTimeout(() => {
+        window.location.href = '../../public/user-interfase/index.html';
+    }, 1000);
   } else {
-    alert("❌ Correo o contraseña incorrectos");
+    mensajeLogin.textContent = 'Usuario o contraseña incorrectos.';
+    mensajeLogin.classList.remove('text-success');
+    mensajeLogin.classList.add('text-danger');
   }
+});
+// Recuperar contraseña
+const formRecuperar = document.getElementById('formRecuperar');
+const mensajeRecuperar = document.getElementById('mensajeRecuperar');
+
+formRecuperar.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const correo = document.getElementById('correoRecuperar').value.trim();
+
+    if (!correo) {
+        mensajeRecuperar.textContent = 'Ingrese un correo válido.';
+        mensajeRecuperar.classList.remove('text-success');
+        mensajeRecuperar.classList.add('text-danger');
+        return;
+    }
+
+    const storedPassword = localStorage.getItem(correo);
+
+    if(storedPassword) {
+        mensajeRecuperar.textContent = `La contraseña de ${correo} es: ${storedPassword}`;
+        mensajeRecuperar.classList.remove('text-danger');
+        mensajeRecuperar.classList.add('text-success');
+    } else {
+        mensajeRecuperar.textContent = 'Correo no registrado.';
+        mensajeRecuperar.classList.remove('text-success');
+        mensajeRecuperar.classList.add('text-danger');
+    }
+
+    formRecuperar.reset();
 });

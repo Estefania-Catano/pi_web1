@@ -41,7 +41,7 @@
   <div class="container mt-5">
   <div class="card shadow p-4 rounded">
     <h2 class="text-center mb-4">Registro de Usuario</h2>
-    <form>
+    <form id="registroForm">
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
@@ -81,14 +81,20 @@
       </div>
 
       <div class="mb-3">
-        <label for="correo" class="form-label">Correo Electrónico</label>
-        <input type="email" class="form-control" id="correo" required>
+        <label for="user" class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" id="user" required>
+      </div>
+
+            <div class="mb-3">
+        <label for="password" class="form-label">Clave</label>
+        <input type="password" class="form-control" id="password" required>
       </div>
 
       <div class="d-grid">
         <button type="submit" class="btn btn-info">Registrar</button>
       </div>
     </form>
+    <p id="mensaje"></p>
   </div>
 </div>
   </div>
