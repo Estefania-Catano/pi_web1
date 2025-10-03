@@ -33,3 +33,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//===============================================================//
+const booksContainer = document.getElementById('books-container');
+
+async function loadBooks() {
+  try {
+    // Buscamos libros en español con un término genérico para obtener resultados variados
+    const query = 'literatura';
+    const langRestrict = ''; // idioma español
+    const maxResults = 30;
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&langRestrict=${langRestrict}&maxResults=${maxResults}`);
+    const data = await response.json();
+
+    if (!data.items) {
+      booksContainer.innerHTML = '<p>No se encontraron libros.</p>';
+      return;
+    }
+
+    data.items.forEach(item => {
+      const book = item.volumeInfo;
+      const coverUrl = book.imageLinks?.thumbnail || 'https://via.placeholder.com/128x193?text=Sin+Portada';
+
+      const card = document.createElement('div');
+      card.className = 'col';
+
+      card.innerHTML = `
+        <div class="card h-100">
+          <a href="${book.infoLink}" target="_blank" rel="noopener noreferrer">
+            <img src="${coverUrl}" class="card-img-top" alt="Portada de ${book.title}">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">${book.title}</h5>
+            <p class="card-text">${book.authors ? book.authors.join(', ') : 'Autor desconocido'}</p>
+          </div>
+        </div>
+      `;
+
+      booksContainer.appendChild(card);
+    });
+  } catch (error) {
+    console.error('Error cargando libros:', error);
+    booksContainer.innerHTML = '<p>No se pudieron cargar los libros.</p>';
+  }
+}
+
+loadBooks();
