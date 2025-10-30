@@ -1,61 +1,80 @@
-# 📚 Proyecto: Sistema de Gestión de Biblioteca
+# 📚 Biblioteca Virtual – Proyecto Web
 
-Este proyecto consiste en un sistema sencillo para gestionar préstamos y devoluciones de libros. El usuario debe iniciar sesión con sus credenciales y podrá interactuar con un menú de opciones que permite realizar préstamos, devoluciones y consultas de libros.
-
----
-
-## 🚀 Características principales
-
-1. **Acceso con credenciales**
-- El usuario debe ingresar usuario y contraseña.
-- Solo se permiten **3 intentos** de acceso. Si los agota, se bloquea el ingreso.
-
-2. **Menú de opciones**
-- Realizar un préstamo de libro.
-- Realizar una devolución de libro.
-- Consultar préstamos activos.
-- Consultar libros disponibles.
-- Salir del sistema.
-
-3. **Préstamo de libro**
-- El usuario debe escoger una **categoría de libro**.
-- Luego selecciona el libro que desea prestar.
-- Validación: el usuario no puede prestar dos veces el mismo libro.
-
-4. **Devolución de libro**
-- El usuario escoge la categoría.
-- Luego selecciona el libro que desea devolver.
-- Validación: no es posible devolver un libro que no se tenga prestado.
-
-5. **Consulta de préstamos activos**
-- El sistema muestra los libros actualmente prestados por el usuario.
-
-6. **Consulta de libros disponibles**
-- El usuario escoge la categoría que quiere consultar.
-- El sistema muestra el estado de los libros: **disponible** o **prestado**.
+Aplicación web estática para explorar un catálogo de libros, leer el blog y gestionar acciones básicas de usuario (login/perfil). Incluye una interfaz de usuario y una interfaz de administrador. El catálogo se alimenta dinámicamente usando la Google Books API (búsqueda en español).
 
 ---
 
-## 📂 Estructura del proyecto
+## 🚀 Funcionalidades
 
-- `index.html` → Interfaz principal del sistema.
-- `info.json` → Archivo de datos que puede contener información de libros y usuarios.
-- `README.md` → Documentación del proyecto.
-
----
-
-## 🛠️ Requisitos
-
-- Navegador web actualizado (para ejecutar el HTML).
-- Editor de texto recomendado: VS Code, Sublime Text o similar.
+- **Catálogo de libros**: búsqueda por texto, cuadrícula responsive (5 columnas, 2 filas visibles), hover en tarjetas.
+- **Blog**: listado de publicaciones informativas.
+- **Autenticación básica (UI)**: pantallas de inicio de sesión para estudiante y administrador.
+- **Perfil de usuario**: vista de datos de usuario y actividades.
+- **Panel administrador**: páginas para categorías, estudiantes, préstamos, devoluciones, etc. (nivel UI).
 
 ---
 
-## ▶️ Ejecución
+## 🗂️ Estructura principal
 
-1. Clonar o descargar este repositorio.
-2. Abrir el archivo `index.html` en un navegador.
-3. Iniciar sesión con las credenciales asignadas.
-4. Navegar por el menú de opciones.
+- `index.html` – Entrada general.
+- `public/`
+  - `home/` – Vistas públicas: `catalog.html`, `Blog.html`, `detail.html`, `login.html`, `userRegistry.html`.
+  - `user-interfase/` – Vistas para usuario autenticado: `index.html`, `catalog.html`, `Blog.html`, `detail.html`, `Post.html`, `userProfile.html`.
+  - `admin-interfase/` – Vistas administrativas: `dashboard.html`, `catalogo.html`, `categorias.html`, `estudiantes.html`, `prestamos.html`, `devoluciones.html`, `perfil.html`, `login.html`, `registro.html`.
+- `src/`
+  - `scripts/` – Lógica de UI: `catalog.js`, `index.js`, `loginStudent.js`, `loginAdmin.js`, `userProfile.js`, etc.
+  - `styles/` – Estilos: `stylesheet.css` (principal), `stilos.css`.
+  - `assets/` – Imágenes (home/admin, íconos, portadas, logo, etc.).
+  - `utils/` – Utilidades: `preferences.js`.
+
 
 ---
+
+## 🧩 Detalles técnicos relevantes
+
+- **Frameworks/Librerías**: HTML5, CSS3, JavaScript, Bootstrap 5 (CDN), Google Fonts.
+- **Catálogo dinámico** (`src/scripts/catalog.js`):
+  - Usa Google Books API para obtener libros en español: `https://www.googleapis.com/books/v1/volumes`.
+  - Búsqueda con debounce, render de tarjetas y normalización de datos (título, autores, portada, enlace).
+  - Por diseño se muestran 10 resultados (2 filas de 5 columnas) para una vista limpia.
+- **Estilos** (`src/styles/stylesheet.css`):
+  - Ajustes responsive para catálogo, blog y otras vistas.
+  - Portadas del catálogo con alturas por breakpoint y padding lateral del contenedor para evitar que queden pegadas a los bordes.
+
+---
+
+## ▶️ Puesta en marcha (local)
+
+Opción A – Abrir directamente:
+1. Clona/descarga el repo.
+2. Abre `index.html` en tu navegador.
+
+Opción B – Servidor local recomendado (mejor para rutas relativas):
+- VS Code + extensión Live Server → botón “Go Live”.
+  - Abre `http://localhost:5500/` y navega a las páginas de `public/`.
+
+---
+
+## ⚙️ Configuración del Catálogo (opcional)
+
+- Término por defecto de búsqueda: `literatura` (puedes cambiarlo en `catalog.js`).
+- Idioma restringido: `es` (español).
+- Para modificar cantidad visible (por filas o columnas):
+  - Columnas: ajustar `row row-cols-5` en los `catalog.html`.
+  - Máximo tarjetas: modificar `books.slice(0, 10)` en `renderBooks` de `catalog.js`.
+
+---
+
+## 📌 Notas y limitaciones
+
+- Es un proyecto estático orientado a UI/UX. Las pantallas de login, préstamos y devoluciones son demostrativas; no hay backend ni persistencia real.
+- Algunas imágenes/íconos son de ejemplo y pueden no representar datos reales.
+
+---
+
+## 🧪 Scripts clave
+
+- `src/scripts/catalog.js`: búsqueda y render del catálogo (Google Books API, filtro y eventos de UI).
+- `src/scripts/index.js`, `main.js`, `events.js`: utilidades y comportamientos generales de la UI.
+- `src/scripts/loginStudent.js`, `loginAdmin.js`: manejo de formularios de acceso a nivel frontend.
+
