@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Biblioteca Virtual</title>
-    <link rel="stylesheet" href="../../src/styles/stilos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWTKbooA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../src/styles/admin/global.css">
+    <link rel="stylesheet" href="../../src/styles/admin/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div class="wrapper">
         <div class="sidebar">
             <div class="sidebar-header">
-                <img src="../../src/assets/admin-images/1.png" alt="Logo" width="70px" height="50px" class="logo-sidebar h3"> Biblioteca Virtual
+                <img src="../../src/assets/admin-images/1.png" alt="Logo" width="70px" height="50px"
+                    class="logo-sidebar h3"> Biblioteca Virtual
             </div>
             <nav class="sidebar-nav">
                 <div class="sidebar-section-title">PRINCIPAL</div>
-                <a href="../../public/admin-interfase/dashboard.html" class="nav-item active"> <i class="fas fa-th-large icon"></i>Dashboard
+                <a href="../../public/admin-interfase/dashboard.html" class="nav-item active"> <i
+                        class="fas fa-th-large icon"></i>Dashboard
                 </a>
                 <a href="../../public/admin-interfase/prestamos.html" class="nav-item">
                     <i class="fas fa-handshake icon"></i>Préstamos
@@ -75,97 +81,115 @@
                         <h1>Dashboard</h1>
                         <p class="breadcrumb">Home / Dashboard</p>
                     </div>
-                    </div>
-
+                </div>
                 <div class="dashboard-cards">
                     <div class="card card-primary">
                         <div class="card-icon"><i class="fas fa-book"></i></div>
                         <div class="card-content">
-                            <div class="card-value">150</div>
+                            <div class="card-value" id="total-books">0</div>
                             <div class="card-title">Total Libros</div>
                         </div>
                     </div>
                     <div class="card card-success">
                         <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
                         <div class="card-content">
-                            <div class="card-value">112</div>
+                            <div class="card-value" id="total-students">0</div>
                             <div class="card-title">Total Estudiantes</div>
                         </div>
                     </div>
                     <div class="card card-warning">
                         <div class="card-icon"><i class="fas fa-handshake"></i></div>
                         <div class="card-content">
-                            <div class="card-value">25</div>
-                            <div class="card-title">Libros Prestados</div>
+                            <div class="card-value" id="total-loans">0</div>
+                            <div class="card-title">Total Préstamos</div>
+                        </div>
+                    </div>
+                    <div class="card card-info">
+                        <div class="card-icon"><i class="fas fa-bookmark"></i></div>
+                        <div class="card-content">
+                            <div class="card-value" id="total-categories">0</div>
+                            <div class="card-title">Total Categorías</div>
                         </div>
                     </div>
                     <div class="card card-danger">
-                        <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                         <div class="card-content">
-                            <div class="card-value">7</div>
-                            <div class="card-title">Préstamos Vencidos</div>
+                            <div class="card-value" id="total-profiles">0</div>
+                            <div class="card-title">Total Profesores</div>
+                        </div>
+                    </div>
+                    <div class="card card-secondary">
+                        <div class="card-icon"><i class="fas fa-undo"></i></div>
+                        <div class="card-content">
+                            <div class="card-value" id="total-returns">0</div>
+                            <div class="card-title">Total Devoluciones</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="table-container mt-4">
-                    <h3>Últimos Préstamos</h3>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Fecha Préstamo</th>
-                                <th>Libro</th>
-                                <th>Estudiante</th>
-                                <th>Fecha Devolución</th>
-                                <th>Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2025-05-30</td>
-                                <td>Como Hacer Que Te Pasen Cosas Buenas</td>
-                                <td>Ana Pérez</td>
-                                <td>2025-06-15</td>
-                                <td><span class="badge bg-success">Activo</span></td>
-                            </tr>
-                            <tr>
-                                <td>2025-05-29</td>
-                                <td>Hábitos Atomicos</td>
-                                <td>Juan García</td>
-                                <td>2025-06-14</td>
-                                <td><span class="badge bg-success">Activo</span></td>
-                            </tr>
-                             <tr>
-                                <td>2025-05-28</td>
-                                <td>Cerar El circulo</td>
-                                <td>María López</td>
-                                <td>2025-06-13</td>
-                                <td><span class="badge bg-success">Vencido</span></td>
-                            </tr>
-                            <tr>
-                                <td>2025-05-27</td>
-                                <td>Cien años de soledad</td>
-                                <td>Carlos Ruiz</td>
-                                <td>2025-06-12</td>
-                                <td><span class="badge bg-success">Vencido</span></td>
-                            </tr>
-                            <tr>
-                                <td>2025-05-26</td>
-                                <td>La Sombra De Un Engaño</td>
-                                <td>Sofía Martínez</td>
-                                <td>2025-06-10</td>
-                                <td><span class="badge bg-success">Activo</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            </div>
 
-                <footer class="footer">
-                    <p>&copy; Reservados todos los derechos</p>
-                    <p>Designed by <a href="#">BIBLIOTECA VIRTUAL</p>
-                </footer>
-                </div>
+            <div class="table-container mt-4">
+                <h3>Últimos Préstamos</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha Préstamo</th>
+                            <th>Libro</th>
+                            <th>Estudiante</th>
+                            <th>Fecha Devolución</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025-05-30</td>
+                            <td>Como Hacer Que Te Pasen Cosas Buenas</td>
+                            <td>Ana Pérez</td>
+                            <td>2025-06-15</td>
+                            <td><span class="badge bg-success">Activo</span></td>
+                        </tr>
+                        <tr>
+                            <td>2025-05-29</td>
+                            <td>Hábitos Atomicos</td>
+                            <td>Juan García</td>
+                            <td>2025-06-14</td>
+                            <td><span class="badge bg-success">Activo</span></td>
+                        </tr>
+                        <tr>
+                            <td>2025-05-28</td>
+                            <td>Cerrar El circulo</td>
+                            <td>María López</td>
+                            <td>2025-06-13</td>
+                            <td><span class="badge bg-success">Vencido</span></td>
+                        </tr>
+                        <tr>
+                            <td>2025-05-27</td>
+                            <td>Cien años de soledad</td>
+                            <td>Carlos Ruiz</td>
+                            <td>2025-06-12</td>
+                            <td><span class="badge bg-success">Vencido</span></td>
+                        </tr>
+                        <tr>
+                            <td>2025-05-26</td>
+                            <td>La Sombra De Un Engaño</td>
+                            <td>Sofía Martínez</td>
+                            <td>2025-06-10</td>
+                            <td><span class="badge bg-success">Activo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <footer class="footer">
+                <p>&copy; Reservados todos los derechos</p>
+                <p>Designed by <a href="#">BIBLIOTECA VIRTUAL</p>
+            </footer>
         </div>
-        </div>
+    </div>
+    </div>
+
+    <script src="../../src/scripts/admin-dashboard.js"></script>
 </body>
+
 </html>

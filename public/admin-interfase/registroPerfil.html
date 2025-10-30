@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Perfil</title>
+    <link rel="stylesheet" href="../../src/styles/admin/global.css">
+    <link rel="stylesheet" href="../../src/styles/admin/registroPerfil.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .add-edit-form-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 800px;
+            margin: 50px auto;
+        }
+        .add-edit-form-container h4 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="add-edit-form-container">
+        <h4>Registro/Edición de Profesor</h4>
+        <form class="add-edit-form">
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="profesorID">ID Profesor</label>
+                    <input type="text" id="profesorID" name="profesorID" value="" placeholder="Ej: P-005">
+                </div>
+                <div class="form-group">
+                    <label for="documentoProfesor">Documento</label>
+                    <input type="text" id="documentoProfesor" name="documentoProfesor" value=""
+                        placeholder="Ej: 55667788">
+                </div>
+            </div>
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="nombresProfesor">Nombres</label>
+                    <input type="text" id="nombresProfesor" name="nombresProfesor" value="" placeholder="Ej: Roberto">
+                </div>
+                <div class="form-group">
+                    <label for="apellidosProfesor">Apellidos</label>
+                    <input type="text" id="apellidosProfesor" name="apellidosProfesor" value=""
+                        placeholder="Ej: Morales">
+                </div>
+            </div>
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="telefonoProfesor">Teléfono</label>
+                    <input type="tel" id="telefonoProfesor" name="telefonoProfesor" value=""
+                        placeholder="Ej: 3141112233">
+                </div>
+                <div class="form-group">
+                    <label for="especialidad">Especialidad</label>
+                    <input type="text" id="especialidad" name="especialidad" value="" placeholder="Ej: Informática">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emailProfesor">Email</label>
+                <input type="email" id="emailProfesor" name="emailProfesor" value=""
+                    placeholder="Ej: roberto.morales@example.com">
+            </div>
+            <div class="form-actions">
+                <button type="reset" class="btn btn-secondary">Limpiar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-danger" id="closeForm">Cerrar</button>
+            </div>
+        </form>
+    </div>
+    <script src="../../src/scripts/perfil.js"></script>
+</body>
+
+</html>
