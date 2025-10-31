@@ -365,6 +365,19 @@ body {
   color: #000;
 }
 
+/* Espaciado lateral para el contenedor del catálogo */
+#books-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1024px) {
+  #books-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
 /* === Celulares === */
 @media (max-width: 600px) {
   #bannerCatalogo {
@@ -386,7 +399,7 @@ body {
   }
 
   .card img {
-    height: 180px;
+    height: 130px;
   }
 
   .pie-pagina .redes img {
@@ -415,7 +428,7 @@ body {
   }
 
   .card img {
-    height: 200px;
+    height: 150px;
   }
 
   .pie-pagina .redes img {
@@ -449,7 +462,7 @@ body {
   }
 
   .card img {
-    height: 220px;
+    height: 170px;
   }
 
   .pie-pagina .redes img {

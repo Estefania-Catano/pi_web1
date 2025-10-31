@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exposición | Sistema de Gestión de Biblioteca</title>
+    <style>
+        :root {
+            --bg: #0e1116;
+            --card: #151a22;
+            --text: #e6edf3;
+            --muted: #9da9b7;
+            --accent: #4aa3ff;
+            --ok: #22c55e;
+            --warn: #f59e0b;
+            --bad: #ef4444;
+        }
+        html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+        .deck { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+        .slide { background: var(--card); border: 1px solid #232b36; border-radius: 14px; padding: 28px; margin: 16px 0 28px; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+        h1 { font-size: 28px; margin: 0 0 12px; }
+        h2 { font-size: 22px; margin: 0 0 12px; color: var(--accent); }
+        p { color: var(--muted); line-height: 1.6; }
+        ul { margin: 10px 0 0 18px; }
+        li { margin: 6px 0; }
+        code, pre { background: #0b0f14; color: #cfe7ff; border: 1px solid #1e2a36; border-radius: 10px; }
+        pre { padding: 14px; overflow: auto; line-height: 1.45; font-size: 13px; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; border: 1px solid #284058; color: #b7d7ff; background: #0f1822; }
+        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+        .col-6 { grid-column: span 6; }
+        .muted { color: var(--muted); }
+        .ok { color: var(--ok); }
+        .warn { color: var(--warn); }
+        .bad { color: var(--bad); }
+        hr.sep { border: none; border-top: 1px solid #223043; margin: 16px 0; }
+        .small { font-size: 13px; }
+        .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background: #0b0f14; border: 1px solid #1e2a36; padding: 2px 6px; border-radius: 6px; }
+        @media print { .slide { page-break-inside: avoid; } }
+    </style>
+    <meta name="description" content="Exposición del proyecto: arquitectura, DOM, arrays, estructuras de control, asincronía y fetch con ejemplos reales.">
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>">
+    <script>
+        // Navegación básica con teclado (↑/↓ o J/K)
+        document.addEventListener('keydown', (e) => {
+            const slides = Array.from(document.querySelectorAll('.slide'));
+            const y = window.scrollY; const h = window.innerHeight;
+            const idx = slides.findIndex(s => s.getBoundingClientRect().top >= 0 && s.getBoundingClientRect().top < h*0.6);
+            const current = idx >= 0 ? idx : 0;
+            if (['ArrowDown','PageDown','j','J'].includes(e.key)) { e.preventDefault(); slides[Math.min(current+1, slides.length-1)].scrollIntoView({behavior:'smooth', block:'start'}); }
+            if (['ArrowUp','PageUp','k','K'].includes(e.key)) { e.preventDefault(); slides[Math.max(current-1, 0)].scrollIntoView({behavior:'smooth', block:'start'}); }
+        });
+    </script>
+    <!-- Instrucciones rápidas para exportar a PDF: Ctrl/Cmd+P → Destino: Guardar como PDF → Márgenes: Estrechos → Fondo: Activado -->
+</head>
+<body>
+<div class="deck">
+    <div class="slide">
+        <h1>📚 Sistema de Gestión de Biblioteca (Web)</h1>
+        <span class="badge">HTML</span>
+        <span class="badge">CSS</span>
+        <span class="badge">JavaScript (módulos)</span>
+        <hr class="sep" />
+        <p>Demostración de arquitectura y código: DOM, arrays, estructuras de control, asincronía y <code>fetch</code>, con ejemplos reales del proyecto.</p>
+        <p class="small muted">Usa ↑/↓ o J/K para moverte. Para PDF: <span class="kbd">Ctrl/Cmd + P</span> → Guardar como PDF → Márgenes: Estrechos → Imprimir fondos.</p>
+    </div>
+
+    <div class="slide">
+        <h2>Arquitectura del proyecto</h2>
+        <div class="grid">
+            <div class="col-6">
+                <ul>
+                    <li><code>public/</code> vistas (home, usuario, admin)</li>
+                    <li><code>src/styles/</code> hojas de estilo</li>
+                    <li><code>src/scripts/</code> módulos de lógica</li>
+                    <li><code>src/main.js</code> punto de entrada</li>
+                    <li><code>src/assets/</code> imágenes</li>
+                </ul>
+            </div>
+            <div class="col-6">
+<pre id="code-main-intro">// src/main.js (fragmento)
+import { initApp } from './scripts/app.js';
+import { setupEventListeners } from './scripts/events.js';
+import { loadUserPreferences } from './utils/preferences.js';
+
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    initApp();
+    setupEventListeners();
+    loadUserPreferences();
+  } catch (error) {
+    console.error('Error al inicializar la aplicación:', error);
+  }
+});</pre>
+                <p><button data-copy="code-main-intro" onclick="copyText('code-main-intro')">Copiar</button></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>DOM: filtros en vivo y UX</h2>
+<pre id="code-dom-filter">// src/scripts/catalog.js (filtrado por texto)
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.querySelector('input[type="search"]');
+  const cards = document.querySelectorAll('.row .col');
+
+  // Evitar recarga en submit
+  const searchForm = searchInput.closest('form');
+  searchForm.addEventListener('submit', (e) => e.preventDefault());
+
+  // Filtrar en vivo
+  searchInput.addEventListener('input', () => {
+    const filter = searchInput.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const title = card.querySelector('.card-title').textContent.toLowerCase();
+      card.style.display = title.includes(filter) ? '' : 'none';
+    });
+  });
+});</pre>
+        <p class="muted small">Propósito: escuchar eventos, leer valores, recorrer nodos y actualizar la UI dinámicamente.</p>
+        <p><button data-copy="code-dom-filter" onclick="copyText('code-dom-filter')">Copiar</button></p>
+    </div>
+
+    <div class="slide">
+        <h2>DOM: creación dinámica de tarjetas</h2>
+<pre id="code-dom-create">// src/scripts/catalog.js (composición de tarjetas)
+const card = document.createElement('div');
+card.className = 'col';
+card.innerHTML = `
+  <div class="card h-100">
+    <a href="${book.infoLink}" target="_blank" rel="noopener noreferrer">
+      <img src="${coverUrl}" class="card-img-top" alt="Portada de ${book.title}">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">${book.title}</h5>
+      <p class="card-text">${book.authors ? book.authors.join(', ') : 'Autor desconocido'}</p>
+    </div>
+  </div>
+`;
+booksContainer.appendChild(card);</pre>
+        <p class="muted small">Propósito: componer UI a partir de datos, usando <code>innerHTML</code> y <code>appendChild</code>.</p>
+        <p><button data-copy="code-dom-create" onclick="copyText('code-dom-create')">Copiar</button></p>
+    </div>
+
+    <div class="slide">
+        <h2>Estructuras de control: if/switch</h2>
+<pre id="code-if">// src/scripts/catalog.js (control cuando no hay resultados)
+if (!data.items) {
+  booksContainer.innerHTML = '<p>No se encontraron libros.</p>';
+  return;
+}</pre>
+<pre id="code-switch">// src/scripts/events.js (control por acción)
+switch (action) {
+  case 'login':
+    handleLogin();
+    break;
+  case 'register':
+    handleRegister();
+    break;
+  case 'search':
+    handleSearch();
+    break;
+  default:
+    console.log('Acción no reconocida:', action);
+}</pre>
+        <p class="muted small">Propósito: dirigir el flujo según condiciones y acciones del usuario.</p>
+        <p>
+            <button data-copy="code-if" onclick="copyText('code-if')">Copiar IF</button>
+            <button data-copy="code-switch" onclick="copyText('code-switch')">Copiar SWITCH</button>
+        </p>
+    </div>
+
+    <div class="slide">
+        <h2>Arrays: filter / forEach / findIndex</h2>
+<pre id="code-arrays">// src/scripts/estudiantes.js (renderizado con filtros)
+function renderTable(filtro = "") {
+  tbody.innerHTML = "";
+  const filtroLower = filtro.trim().toLowerCase();
+  const filtrados = estudiantes.filter(est =>
+    Object.values(est).some(val => String(val).toLowerCase().includes(filtroLower))
+  );
+
+  filtrados.forEach(est => {
+    const realIndex = estudiantes.findIndex(e => e.codigo === est.codigo);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${est.codigo}</td>
+      <td>${est.documento}</td>
+      <td>${est.nombres}</td>
+      <td>${est.apellidos}</td>
+      <td>${est.telefono}</td>
+      <td>${est.programa}</td>
+      <td>${est.seccion}</td>
+      <td class="actions">
+        <button class="btn btn-warning btn-sm edit" data-index="${realIndex}">Editar</button>
+        <button class="btn btn-danger btn-sm delete" data-index="${realIndex}">Eliminar</button>
+      </td>`;
+    tbody.appendChild(tr);
+  });
+  paginationInfo.textContent = `Mostrando ${filtrados.length} de ${estudiantes.length} registros`;
+}</pre>
+        <p class="muted small">Propósito: filtrar colección, iterar para construir filas y calcular índices reales.</p>
+        <p><button data-copy="code-arrays" onclick="copyText('code-arrays')">Copiar</button></p>
+    </div>
+
+    <div class="slide">
+        <h2>Asincronía y fetch: Google Books API</h2>
+<pre id="code-fetch">// src/scripts/catalog.js (carga asíncrona)
+async function loadBooks() {
+  try {
+    const query = 'literatura';
+    const langRestrict = '';
+    const maxResults = 30;
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&langRestrict=${langRestrict}&maxResults=${maxResults}`);
+    const data = await response.json();
+
+    if (!data.items) {
+      booksContainer.innerHTML = '<p>No se encontraron libros.</p>';
+      return;
+    }
+
+    data.items.forEach(item => { /* ...crear tarjetas... */ });
+  } catch (error) {
+    console.error('Error cargando libros:', error);
+    booksContainer.innerHTML = '<p>No se pudieron cargar los libros.</p>';
+  }
+}
+loadBooks();</pre>
+        <p class="muted small">Propósito: demostrar <code>async/await</code>, manejo de errores y renderizado con datos externos.</p>
+        <p><button data-copy="code-fetch" onclick="copyText('code-fetch')">Copiar</button></p>
+    </div>
+
+    <div class="slide">
+        <h2>Formularios y almacenamiento (localStorage)</h2>
+<pre id="code-form">// src/scripts/userRegistry.js (registro sin backend)
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const usuarioData = { /* ...leer inputs... */ };
+  const correo = usuarioData.correo;
+  if (localStorage.getItem(correo)) {
+    mensaje.textContent = 'El usuario ya existe.';
+  } else {
+    localStorage.setItem(correo, JSON.stringify(usuarioData));
+    mensaje.textContent = 'Usuario registrado con éxito!';
+    form.reset();
+  }
+});</pre>
+        <p class="muted small">Propósito: prevenir recarga, validar duplicados y persistir datos para demo.</p>
+        <p><button data-copy="code-form" onclick="copyText('code-form')">Copiar</button></p>
+    </div>
+
+    <div class="slide">
+        <h2>Cómo presentar en 2–3 minutos</h2>
+        <ul>
+            <li><b>Arquitectura</b>: explicar carpetas y <code>src/main.js</code>.</li>
+            <li><b>DOM</b>: filtrar tarjetas en vivo y creación de tarjetas.</li>
+            <li><b>Arrays/control</b>: <code>filter</code>, <code>forEach</code>, <code>findIndex</code>, <code>if</code>/<code>switch</code>.</li>
+            <li><b>Asincronía</b>: <code>loadBooks()</code> y manejo de errores.</li>
+            <li><b>Form</b>: submit + <code>localStorage</code>.</li>
+        </ul>
+        <p class="muted small">Sugerencia: tener abierta la vista de catálogo para mostrar la carga de libros y el filtrado en vivo.</p>
+    </div>
+
+    <div class="slide">
+        <h2>Exportar a PDF</h2>
+        <ul>
+            <li>Abre este archivo en el navegador: <code>docs/exposicion.html</code></li>
+            <li>Presiona <span class="kbd">Ctrl/Cmd + P</span></li>
+            <li><b>Destino</b>: Guardar como PDF</li>
+            <li><b>Márgenes</b>: Estrechos</li>
+            <li><b>Opciones</b>: Imprimir fondos/colores (activado)</li>
+            <li>Guardar</li>
+        </ul>
+        <p class="ok">Listo ✅ Tendrás un PDF profesional de la exposición.</p>
+    </div>
+</div>
+
+<script>
+function copyText(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector(`[data-copy='${id}']`);
+    if (!btn) return;
+    const old = btn.innerText; btn.innerText = 'Copiado';
+    setTimeout(() => btn.innerText = old, 1200);
+  });
+}
+</script>
+</body>
+</html>
