@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devoluciones - Biblioteca Virtual</title>
-    <link rel="stylesheet" href="../../src/styles/stilos.css">
+    <title>Devoluciones</title>
+    <link rel="stylesheet" href="../../src/styles/admin/global.css">
+    <link rel="stylesheet" href="../../src/styles/admin/devoluciones.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWTKbooA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -15,29 +15,35 @@
     <div class="wrapper">
         <div class="sidebar">
             <div class="sidebar-header">
-                <img src="../../src/assets/admin-images/1.png" alt="Logo" width="70px" height="50px" class="logo-sidebar h3">
+                <img src="../../src/assets/admin-images/1.png" alt="Logo" width="70px" height="50px"
+                    class="logo-sidebar h3">
                 Biblioteca Virtual
             </div>
             <nav class="sidebar-nav">
                 <div class="sidebar-section-title">PRINCIPAL</div>
-                <a href="../../public/admin-interfase/dashboard.html" class="nav-item"> <i class="fas fa-th-large icon"></i>Dashboard
+                <a href="../../public/admin-interfase/dashboard.html" class="nav-item"> <i
+                        class="fas fa-th-large icon"></i>Dashboard
                 </a>
-                <a href="../../public/admin-interfase/prestamos.html" class="nav-item"> <i class="fas fa-handshake icon"></i>Préstamos
+                <a href="../../public/admin-interfase/prestamos.html" class="nav-item"> <i
+                        class="fas fa-handshake icon"></i>Préstamos
                 </a>
-                <a href="../../public/admin-interfase/devoluciones.html" class="nav-item active"> <i class="fas fa-undo icon"></i>Devoluciones
+                <a href="../../public/admin-interfase/devoluciones.html" class="nav-item active"> <i
+                        class="fas fa-undo icon"></i>Devoluciones
                 </a>
                 <div class="sidebar-section-title mt-3">LIBROS</div>
                 <a href="../../public/admin-interfase/catalogo.html" class="nav-item">
                     <i class="fas fa-book icon"></i>Libros
                 </a>
-                <a href="../../public/admin-interfase/categorias.html" class="nav-item"> <i class="fas fa-bookmark icon"></i>Categorías
+                <a href="../../public/admin-interfase/categorias.html" class="nav-item"> <i
+                        class="fas fa-bookmark icon"></i>Categorías
                 </a>
 
                 <div class="sidebar-section-title mt-3">USUARIOS</div>
                 <a href="../../public/admin-interfase/estudiantes.html" class="nav-item">
                     <i class="fas fa-user-graduate icon"></i>Estudiantes
                 </a>
-                <a href="../../public/admin-interfase/perfil.html" class="nav-item"> <i class="fas fa-chalkboard-teacher icon"></i>Profesores
+                <a href="../../public/admin-interfase/perfil.html" class="nav-item"> <i
+                        class="fas fa-chalkboard-teacher icon"></i>Profesores
                 </a>
             </nav>
         </div>
@@ -65,9 +71,9 @@
                         <h1>Devoluciones</h1>
                         <p class="breadcrumb">Home / Devoluciones</p>
                     </div>
-                    <button class="btn btn-primary" id="openAddForm">
-                        <i class="fas fa-plus icon-btn"></i>Registrar Devolución
-                    </button>
+                    <a href="registroDevoluciones.html" class="btn btn-primary">
+                        <i class="fas fa-plus icon-btn"></i>Nueva Devolución
+                    </a>
                 </div>
 
                 <div class="table-container">
@@ -78,117 +84,30 @@
                         </div>
                     </div>
 
-                    <table class="data-table">
+                    <table class="data-table" id="returns-table">
                         <thead>
                             <tr>
-                                <th>ID Devolución <i class="fas fa-sort sort-icon"></i></th>
-                                <th>ID Préstamo <i class="fas fa-sort sort-icon"></i></th>
-                                <th>Libro <i class="fas fa-sort sort-icon"></i></th>
-                                <th>Estudiante <i class="fas fa-sort sort-icon"></i></th>
-                                <th>Fecha Devolución <i class="fas fa-sort sort-icon"></i></th>
-                                <th>Estado <i class="fas fa-sort sort-icon"></i></th>
-                                <th></th>
+                                <th>ID Préstamo</th>
+                                <th>Libro</th>
+                                <th>Estudiante</th>
+                                <th>Fecha Devolución</th>
+                                <th>Estado</th>
+                                <th>Observaciones</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><i class="fas fa-undo icon-table"></i>D-001</td>
-                                <td>P-001</td>
-                                <td>El Señor de los Anillos</td>
-                                <td>Ana Pérez</td>
-                                <td>2025-06-14</td>
-                                <td><span class="badge bg-success">A tiempo</span></td>
-                                <td class="actions">
-                                    <button class="btn btn-warning btn-sm" title="Ver Detalles"><i class="fas fa-eye"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><i class="fas fa-undo icon-table"></i>D-002</td>
-                                <td>P-002</td>
-                                <td>Harry Potter y la Piedra Filosofal</td>
-                                <td>Juan García</td>
-                                <td>2025-06-15</td>
-                                <td><span class="badge bg-success">Con Retraso</span></td>
-                                <td class="actions">
-                                    <button class="btn btn-warning btn-sm" title="Ver Detalles"><i class="fas fa-eye"></i></button>
-                                </td>
-                            </tr>
-                             <tr>
-                                <td><i class="fas fa-undo icon-table"></i>D-003</td>
-                                <td>P-005</td>
-                                <td>1984</td>
-                                <td>Sofía Martínez</td>
-                                <td>2025-06-10</td>
-                                <td><span class="badge bg-success">A tiempo</span></td>
-                                <td class="actions">
-                                    <button class="btn btn-warning btn-sm" title="Ver Detalles"><i class="fas fa-eye"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
-
-                    <div class="pagination-info">
-                        <small>Mostrando registros del 1 al 3 de un total de 3 registros</small>
-                        <div class="pagination">
-                            <a href="#" class="page-link disabled">Anterior</a>
-                            <a href="#" class="page-link active">1</a>
-                            <a href="#" class="page-link disabled">Siguiente</a>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="add-edit-form-container">
-                    <h4>Registrar Nueva Devolución</h4>
-                    <form class="add-edit-form">
-                        <div class="form-group-row">
-                            <div class="form-group">
-                                <label for="prestamoID">ID Préstamo</label>
-                                <input type="text" id="prestamoID" name="prestamoID" placeholder="Ej: P-00X">
-                            </div>
-                             <div class="form-group">
-                                <label for="libroDevuelto">Libro (Autocompletar por ID Préstamo)</label>
-                                <input type="text" id="libroDevuelto" name="libroDevuelto" readonly placeholder="Nombre del libro">
-                            </div>
-                        </div>
-                        <div class="form-group-row">
-                           <div class="form-group">
-                                <label for="estudianteDevuelve">Estudiante (Autocompletar por ID Préstamo)</label>
-                                <input type="text" id="estudianteDevuelve" name="estudianteDevuelve" readonly placeholder="Nombre del estudiante">
-                            </div>
-                            <div class="form-group">
-                                <label for="fechaDevolucion">Fecha de Devolución</label>
-                                <input type="date" id="fechaDevolucion" name="fechaDevolucion" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="estadoDevolucion">Estado de Devolución</label>
-                            <select id="estadoDevolucion" name="estadoDevolucion">
-                                <option value="">Seleccione un estado</option>
-                                <option value="A tiempo">A tiempo</option>
-                                <option value="Con Retraso">Con Retraso</option>
-                                <option value="Con Daños">Con Daños</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="observacionesDevolucion">Observaciones</label>
-                            <textarea id="observacionesDevolucion" name="observacionesDevolucion" rows="3" placeholder="Ej: Libro devuelto en perfectas condiciones."></textarea>
-                        </div>
-                        <div class="form-actions">
-                            <button type="reset" class="btn btn-secondary">Limpiar</button>
-                            <button type="submit" class="btn btn-primary">Registrar Devolución</button>
-                            <button type="button" class="btn btn-danger" id="closeForm">Cerrar</button>
-                        </div>
-                    </form>
-                </div>
                 <footer class="footer">
-                   <p>&copy; Reservados todos los derechos</p>
+                    <p>&copy; Reservados todos los derechos</p>
                     <p>Designed by <a href="#">BIBLIOTECA VIRTUAL</p>
                 </footer>
             </div>
         </div>
-    </div>
 
-    <!-- Aquí enlazamos el JS -->
-<script src="../admin/assets/js/devoluciones.js"></script>
-    </body>
+            <script src="../../src/scripts/admin-devoluciones.js"></script>
+</body>
+
 </html>

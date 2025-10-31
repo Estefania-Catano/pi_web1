@@ -11,107 +11,106 @@
   <link rel="stylesheet" href="../../src/styles/admin/catalogo.css" />
 
   <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     crossorigin="anonymous" />
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="sidebar">
-            <div class="sidebar-header">
+  <div class="wrapper">
+    <div class="sidebar">
+       <div class="sidebar-header">
                 <img src="../../src/assets/admin-images/1.png" alt="Logo" width="70px" height="50px"
                     class="logo-sidebar h3">
                 Biblioteca Virtual
             </div>
-            <nav class="sidebar-nav">
-                <div class="sidebar-section-title">PRINCIPAL</div>
+      <nav class="sidebar-nav">
+          <div class="sidebar-section-title">PRINCIPAL</div>
           <a href="../../public/admin-interfase/dashboard.html" class="nav-item">
               <i class="fas fa-th-large icon"></i>Dashboard
-                </a>
-                <a href="../../public/admin-interfase/prestamos.html" class="nav-item">
-                    <i class="fas fa-handshake icon"></i>Préstamos
-                </a>
-                <a href="../../public/admin-interfase/devoluciones.html" class="nav-item">
-                    <i class="fas fa-undo icon"></i>Devoluciones
-                </a>
+          </a>
+          <a href="../../public/admin-interfase/prestamos.html" class="nav-item">
+              <i class="fas fa-handshake icon"></i>Préstamos
+          </a>
+          <a href="../../public/admin-interfase/devoluciones.html" class="nav-item">
+              <i class="fas fa-undo icon"></i>Devoluciones
+          </a>
           <div class="sidebar-section-title mt-3">LIBROS</div>
           <a href="../../public/admin-interfase/catalogo.html" class="nav-item active">
               <i class="fas fa-book icon"></i>Libros
           </a>
+          <a href="../../public/admin-interfase/categorias.html" class="nav-item">
+              <i class="fas fa-bookmark icon"></i>Categorías
           </a>
-                <a href="../../public/admin-interfase/categorias.html" class="nav-item">
-                    <i class="fas fa-bookmark icon"></i>Categorías
-                </a>
 
-                <div class="sidebar-section-title mt-3">USUARIOS</div>
-                <a href="../../public/admin-interfase/estudiantes.html" class="nav-item">
-                    <i class="fas fa-user-graduate icon"></i>Estudiantes
-                </a>
-                <a href="../../public/admin-interfase/perfil.html" class="nav-item">
-                    <i class="fas fa-chalkboard-teacher icon"></i>Profesores
-                </a>
-            </nav>
-        </div>
+          <div class="sidebar-section-title mt-3">USUARIOS</div>
+          <a href="../../public/admin-interfase/estudiantes.html" class="nav-item">
+              <i class="fas fa-user-graduate icon"></i>Estudiantes
+          </a>
+          <a href="../../public/admin-interfase/perfil.html" class="nav-item">
+              <i class="fas fa-chalkboard-teacher icon"></i>Profesores
+          </a>
+      </nav>
+    </div>
 
-        <div class="page-content">
-            <header class="navbar">
-                <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+    <div class="page-content">
+      <header class="navbar">
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
 
-                <nav class="navbar-nav">
-                    <a href="#" class="nav-link"><i class="fas fa-bell icon-lg text-primary"></i></a>
-                    <a href="#" class="nav-link"><i class="fas fa-user-circle icon-lg text-secondary"></i></a>
-                    <div class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle">Admin</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Perfil</a>
-                            <a class="dropdown-item" href="#">Configuración</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                        </div>
-                    </div>
-                </nav>
-            </header>
-            <div class="container">
-                <div class="header-content">
-                    <div>
-                        <h1>Libros</h1>
-                        <p class="breadcrumb">Home / Libros</p>
-                    </div>
+        <nav class="navbar-nav">
+          <a href="#" class="nav-link"><i class="fas fa-bell icon-lg text-primary"></i></a>
+          <a href="#" class="nav-link"><i class="fas fa-user-circle icon-lg text-secondary"></i></a>
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">Admin</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Perfil</a>
+              <a class="dropdown-item" href="#">Configuración</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Cerrar Sesión</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container">
+        <div class="header-content">
+          <div>
+            <h1>Libros</h1>
+            <p class="breadcrumb">Home / Libros</p>
+          </div>
           <a href="registroLibros.html" class="btn btn-primary">
             <i class="fas fa-plus icon-btn"></i> Nuevo Libro
           </a>
-                </div>
+        </div>
 
-                <div class="table-container">
-                    <div class="table-actions">
-                        <div class="search-input">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" placeholder="Buscar:">
-                        </div>
-                    </div>
+        <div class="table-container">
+          <div class="table-actions">
+            <div class="search-input">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" placeholder="Buscar:">
+            </div>
+          </div>
 
            <table class="data-table" id="tablaLibros">
-                        <thead>
-                            <tr>
+             <thead>
+               <tr>
                  <th>ID</th>
                  <th>Título</th>
                  <th>Autor</th>
                  <th>Categoría</th>
                  <th>Año</th>
                  <th>Acciones</th>
-                            </tr>
-                        </thead>
+               </tr>
+             </thead>
              <tbody></tbody>
            </table>
-                        </div>
-
-                <footer class="footer">
-                <p>&copy; Reservados todos los derechos</p>
-                    <p>Designed by <a href="#">BIBLIOTECA VIRTUAL</p>
-                </footer>
-            </div>
         </div>
+
+        <footer class="footer">
+          <p>&copy; Reservados todos los derechos</p>
+          <p>Designed by <a href="#">BIBLIOTECA VIRTUAL</p>
+        </footer>
+      </div>
     </div>
+  </div>
 
   <script src="../../src/scripts/admin-libros.js"></script>
 </body>

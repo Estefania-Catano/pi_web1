@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Devolución</title>
+  <link rel="stylesheet" href="../../src/styles/admin/global.css">
+  <link rel="stylesheet" href="../../src/styles/admin/registroDevoluciones.css">
+  <style>
+  </style>
+</head>
+<body>
+  <main class="floating-form">
+    <h1>Registrar Devolución</h1>
+
+    <form id="return-form">
+      <div class="form-group">
+        <label>ID Préstamo:</label>
+        <input type="text" name="idPrestamo" placeholder="Ej: P-001" required />
+      </div>
+
+      <div class="form-group">
+        <label>ID Libro:</label>
+        <input type="text" name="idLibro" placeholder="Ej: L-001" required />
+      </div>
+
+      <div class="form-group">
+        <label>ID Estudiante:</label>
+        <input type="text" name="idEstudiante" placeholder="Ej: S-001" required />
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de Devolución:</label>
+        <input type="date" name="fechaDevolucion" required />
+      </div>
+
+      <div class="form-group">
+        <label>Estado:</label>
+        <select name="estado" required>
+          <option value="Devuelto">Devuelto</option>
+          <option value="Retrasado">Retrasado</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Observaciones:</label>
+        <textarea name="observaciones" placeholder="Notas u observaciones..."></textarea>
+      </div>
+
+      <div class="buttons">
+        <button class="btn-primary" type="submit">Guardar</button>
+        <a href="devoluciones.html" class="btn-secondary">Volver</a>
+      </div>
+    </form>
+  </main>
+
+  <script src="../../src/scripts/admin-devoluciones.js"></script>
+</body>
+</html>

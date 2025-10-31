@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Préstamo</title>
+    <link rel="stylesheet" href="../../src/styles/admin/global.css">
+    <link rel="stylesheet" href="../../src/styles/admin/registroPrestamos.css">
+<style>
+    
+  </style>
+</head>
+<body>
+  <main class="floating-form">
+    <h1>Registrar Préstamo</h1>
+
+    <form id="loan-form">
+      <input type="hidden" name="id" />
+
+      <div class="form-group">
+        <label> Libro:</label>
+        <input type="text" name="bookId" placeholder="Ej: L-001" required />
+      </div>
+
+      <div class="form-group">
+        <label>Estudiante:</label>
+        <input type="text" name="studentId" placeholder="Ej: S-001" required />
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de préstamo:</label>
+        <input type="date" name="loanDate" required />
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de devolución:</label>
+        <input type="date" name="returnDate" required />
+      </div>
+
+      <div class="form-group">
+        <label>Estado:</label>
+        <select name="status" required>
+          <option value="Activo">Activo</option>
+          <option value="Devuelto">Devuelto</option>
+          <option value="Retrasado">Retrasado</option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <button id="btnSubmit" class="btn-primary" type="submit">Guardar</button>
+        <a href="prestamos.html" class="btn-secondary">Volver</a>
+      </div>
+    </form>
+  </main>
+
+  <script src="../../src/scripts/admin-prestamos.js"></script>
+</body>
+</html>
